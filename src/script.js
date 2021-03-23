@@ -11,6 +11,7 @@ const canvas = document.querySelector('canvas.webgl');
 
 // Scene
 const scene = new THREE.Scene();
+scene.background = new THREE.Color( 0xffffff );
 
 // Objects
 const geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -18,9 +19,9 @@ const geometry = new THREE.BoxGeometry(1, 1, 1);
 // Materials
 
 const material = new THREE.MeshStandardMaterial();
-//material.metalness = 0.7;
-material.roughness = 0.2;
-material.color = new THREE.Color(0xffffff);
+material.metalness = 0;
+material.roughness = 0.6;
+material.color = new THREE.Color(0x535353);
 
 // Mesh
 const cube = new THREE.Mesh(geometry, material);
@@ -76,7 +77,7 @@ const camera = new THREE.PerspectiveCamera(
 );
 camera.position.x = 0;
 camera.position.y = 0;
-camera.position.z = 2;
+camera.position.z = 3;
 scene.add(camera);
 
 // Controls
@@ -102,7 +103,9 @@ const tick = () => {
 	const elapsedTime = clock.getElapsedTime();
 
 	// Update objects
-	cube.rotation.y = 0.5 * elapsedTime;
+	cube.rotation.y = 0.25 * elapsedTime;
+    cube.rotation.x = 0.25 * elapsedTime;
+    cube.rotation.z = 0.25 * elapsedTime;
 
 	// Update Orbital Controls
 	// controls.update()
